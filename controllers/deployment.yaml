@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: urlshortener
+  labels:
+    app: urlshortener
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: urlshortener
+  template:
+    metadata:
+      name: urlshortener
+      labels:
+        app: urlshortener
+    spec:
+      containers:
+        - name: urlshortener
+          image: ogundepoelizabeth/url_shortener
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+      restartPolicy: Always
+      
